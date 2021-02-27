@@ -1,4 +1,4 @@
-package es.studium.PracticaTema3_PSP;
+ package es.studium.PracticaTema3_PSP;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent; 
@@ -61,18 +61,18 @@ public class Servidor1 extends JFrame implements ActionListener
 		lblNewLabel.setBounds(250, 18, 69, 14);
 		getContentPane().add(lblNewLabel);
 		
-		// Se ha anulado el cierre de la ventana para que la finalización
-		// del servidor se haga desde el botón Salir.
-		// Cuando se pulsa el botón se cierra el ServerSocket y
-		// finaliza la ejecución 
+		/* Se ha anulado el cierre de la ventana para que la finalización
+		   del servidor se haga desde el botón Salir.
+		   Cuando se pulsa el botón se cierra el ServerSocket y
+		   finaliza la ejecución*/ 
 		salir.addActionListener(this); 
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	}
 	
 	public static void main(String args[]) throws Exception
 	{ 
-		// Desde el main se inicia el servidor
-		// y las variables y se prepara la pantalla 
+		/* Desde el main se inicia el servidor
+		   y las variables y se prepara la pantalla */
 		servidor = new ServerSocket(PUERTO);
 		
 		// Obtiene un número aleatorio que será el número oculto que mostraremos en la cabecera.
@@ -84,9 +84,9 @@ public class Servidor1 extends JFrame implements ActionListener
 		mensaje.setText("El número a adivinar es: " + random);
 		mensaje1.setText("0");
 		
-		// Se usa un bucle para controlar el número de conexiones.
-		// Dentro del bucle el servidor espera la conexión 
-		// del cliente y cuando se conecta se crea un socket 
+		/*Se usa un bucle para controlar el número de conexiones.
+		  Dentro del bucle el servidor espera la conexión 
+		  del cliente y cuando se conecta se crea un socket */
 		while(CONEXIONES < MAXIMO) 
 		{ 
 			Socket socket;
@@ -99,10 +99,10 @@ public class Servidor1 extends JFrame implements ActionListener
 				// Sale por aquí si pulsamos el botón salir
 				break;
 			} 
-			// El socket creado se añade a la tabla
-			// se incrementa el número de conexiones
-			// y se lanza el hilo para gestionar los mensajes
-			// del cliente que se acaba de conectar 
+			/* El socket creado se añade a la tabla
+			   se incrementa el número de conexiones
+			   y se lanza el hilo para gestionar los mensajes
+			   del cliente que se acaba de conectar */
 			tabla[CONEXIONES] = socket; 
 			CONEXIONES++; 
 			ACTUALES++;

@@ -112,15 +112,25 @@ public class Cliente extends JFrame implements ActionListener
 	{
 		if(arg0.getSource() == boton)
 		{ 
+			
 			String texto = nombreJugador + "> " + mensaje.getText();
 			try
 			{
 				mensaje.setText(""); 
 				fSalida.writeUTF(texto);
+				// Hacemos que hasta que no pasen 3 segundos no vuelva a pedir número a otra persona.
+				boton.setEnabled(false);
+				Thread.sleep(3000);
+				boton.setEnabled(true);
 			} 
 			catch (IOException ex)
 			{ 
 				ex.printStackTrace();
+			} 
+			catch (InterruptedException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		

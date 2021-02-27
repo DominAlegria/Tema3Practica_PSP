@@ -25,7 +25,7 @@ public class HiloServidor extends Thread
 		}
 	}
 	
-	/* En el método run() lo primeo que hacemos es enviar todos los mensajes
+	/* En el método run() lo primero que hacemos es enviar todos los mensajes
 	   actuales al cliente que se acaba de incorporar*/
 	public synchronized void run()
 	{
@@ -66,8 +66,7 @@ public class HiloServidor extends Thread
 						String nombreJugador = arrayJuego[0];
 						String numeroDadoJugador = arrayJuego[1];
 						
-						// Hacemos que hasta que no pasen 3 segundos no vuelva a pedir número a otra persona.
-						Thread.sleep(3000);
+						
 						if (Integer.parseInt(numeroDadoJugador) < Servidor1.random)
 						{
 							Servidor1.textarea.append("> " + nombreJugador + " piensa que el número es el " + numeroDadoJugador + ", pero el número es mayor a " + numeroDadoJugador + ". \n");
@@ -78,7 +77,7 @@ public class HiloServidor extends Thread
 						}
 						else if (Integer.parseInt(numeroDadoJugador) == Servidor1.random)
 						{
-							Servidor1.textarea.append("> " + nombreJugador + " piensa que el número es el " + numeroDadoJugador + ", y ha ACERTADOOOO!!!!. \n" + "Juego finalizado...");
+							Servidor1.textarea.append("> " + nombreJugador + " piensa que el número es el " + numeroDadoJugador + ", y ha ACERTADOOOO!!!!. \n" + "Juego finalizado... \n");
 							texto = Servidor1.textarea.getText();
 							EnviarMensajes(texto);
 						}
